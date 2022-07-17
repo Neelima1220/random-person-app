@@ -9,7 +9,6 @@ import {
 } from 'react-icons/fa';
 import './style.css';
 import { PersonsData } from './data';
-import { cloneDeep } from 'lodash';
 export default function App() {
   const [data, setData] = useState(PersonsData);
   const [current, setCurrent] = useState(0);
@@ -34,36 +33,11 @@ export default function App() {
     setTxtTitle('name');
   }, [setPerson, data]);
 
-  const handleName = (txt) => {
+  const handleValue = (txt) => {
     setTxtTitle(txt);
-    setName(person.name);
-    setValu(person.name);
+    setValu(person[txt]);
   };
-  const handleEmail = (txt) => {
-    setTxtTitle(txt);
-    setEmail(person.email);
-    setValu(person.email);
-  };
-  const handleAge = (txt) => {
-    setTxtTitle(txt);
-    setAge(person.age);
-    setValu(person.age as any);
-  };
-  const handleAddress = (txt) => {
-    setTxtTitle(txt);
-    setAddress(person.address);
-    setValu(person.address as any);
-  };
-  const handlePhone = (txt) => {
-    setTxtTitle(txt);
-    setPhone(person.phone);
-    setValu(person.phone as any);
-  };
-  const handlePassword = (txt) => {
-    setTxtTitle(txt);
-    setPassword(person.password);
-    setValu(person.password as any);
-  };
+
   return (
     <div className="user-container">
       <img src={image} className="imageStyles" alt={data[current].image} />
@@ -74,20 +48,35 @@ export default function App() {
         <h4 className="title"> {valu}</h4>
       </div>
       <div className="icons">
-        <FaUser className="icon" onMouseEnter={() => handleName('name')} />
+        <FaUser
+          className="icon"
+          name="name"
+          onMouseEnter={() => handleValue('name')}
+        />
         <FaEnvelopeOpen
           className="icon"
-          onMouseEnter={() => handleEmail('Email')}
+          name="email"
+          onMouseEnter={() => handleValue('email')}
         />
         <FaCalendarTimes
           className="icon"
-          onMouseEnter={() => handleAge('age')}
+          name="age"
+          onMouseEnter={() => handleValue('age')}
         />
-        <FaMap className="icon" onMouseEnter={() => handleAddress('address')} />
-        <FaPhone className="icon" onMouseEnter={() => handlePhone('Phone')} />
+        <FaMap
+          className="icon"
+          name="address"
+          onMouseEnter={() => handleValue('address')}
+        />
+        <FaPhone
+          className="icon"
+          name="phone"
+          onMouseEnter={() => handleValue('phone')}
+        />
         <FaLock
           className="icon"
-          onMouseEnter={() => handlePassword('Password')}
+          name="password"
+          onMouseEnter={() => handleValue('password')}
         />
       </div>
       <button onClick={generatePerson}>Generata Person</button>
