@@ -1,6 +1,8 @@
 h1,
+h4,
 p {
   font-family: Lato;
+  margin: 0;
 }
 .imageStyles {
   border-radius: 50%;
@@ -9,4 +11,26 @@ p {
   object-fit: cover;
 }
 .user-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+}
+.title-container {
+  margin: 1rem 0 0.3rem 0;
+  text-align: center;
+}
+.icons {
+  display: flex;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+.icon {
+  margin-left: 1rem;
+}
+.title {
+  margin-top: 0.5rem;
 }
