@@ -14,9 +14,9 @@ p {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  margin-top: 5rem;
+  margin-top: 1rem;
 }
 .title-container {
   margin: 1rem 0 0.3rem 0;
