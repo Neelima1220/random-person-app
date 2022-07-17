@@ -9,24 +9,27 @@ import {
 } from 'react-icons/fa';
 import './style.css';
 import { PersonsData } from './data';
+
+interface IPerson {
+  id: number;
+  name: string;
+  email: string;
+  age: number;
+  address: string;
+  phone: string;
+  password: string;
+  image: string;
+}
 export default function App() {
-  const [data, setData] = useState(PersonsData);
-  const [current, setCurrent] = useState(0);
-  const [person, setPerson] = useState(data[current]);
-  const [image, setImage] = useState(person.image);
-  const [name, setName] = useState(person.name);
-  const [email, setEmail] = useState(person.email);
-  const [age, setAge] = useState(person.age);
-  const [address, setAddress] = useState(person.address);
-  const [phone, setPhone] = useState(person.phone);
-  const [password, setPassword] = useState(person.password);
-  const [txtTitle, setTxtTitle] = useState('name');
-  const [valu, setValu] = useState(person.name);
+  const [data, setData] = useState<IPerson[]>(PersonsData);
+  const [person, setPerson] = useState<IPerson>(data[0]);
+  const [image, setImage] = useState<string>(person.image);
+  const [txtTitle, setTxtTitle] = useState<string>('name');
+  const [valu, setValu] = useState<string>(person.name);
 
   const generatePerson = useCallback(() => {
     const tempData = [...data];
     const idx = Math.floor(Math.random() * tempData.length);
-    console.log(tempData[idx]);
     setPerson(tempData[idx]);
     setImage(tempData[idx].image);
     setValu(tempData[idx].name);
@@ -40,7 +43,7 @@ export default function App() {
 
   return (
     <div className="user-container">
-      <img src={image} className="imageStyles" alt={data[current].image} />
+      <img src={image} className="imageStyles" alt={data[0].image} />
       <div className="title-container">
         <p>
           My <span style={{ minWidth: '5rem' }}> {txtTitle}</span> is
